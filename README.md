@@ -16,6 +16,9 @@ The form should consist of:
 - A text area for user’s comment.
 - The form will post to a second page which will display the information in an easy to read format.
 - Add a submit button on the second page which will save the response to a database table.
+- Database name must be "BEB-PROJECT"
+- A table will be created to house the comment form, the table name will be "responses"
+- The table will contain the following fields "id, name, email, issue, comment, date_created"
 
 ## Suggested Implementation
 *Either Local web server such as XAMPP or WAMP Or Web hosting*
