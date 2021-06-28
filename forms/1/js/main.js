@@ -8,8 +8,10 @@
 		if ($('#contactForm').length > 0 ) {
 			$( "#contactForm" ).validate( {
 				rules: {
-					name: "required",
+					firstname: "required",
+					lastname: "required",
 					subject: "required",
+					complaint: "required",
 					email: {
 						required: true,
 						email: true
@@ -20,10 +22,11 @@
 					}
 				},
 				messages: {
-					name: "Please enter your name",
+					firstname: "Please enter your firstname",
+					lastname: "Please enter your lastname",
 					subject: "Please enter your subject",
 					email: "Please enter a valid email address",
-					message: "Please enter a message"
+					complaint: "Please enter a complaint"
 				},
 				/* submit via ajax */
 				
@@ -33,7 +36,7 @@
 
 					$.ajax({   	
 				      type: "POST",
-				      url: "php/sendEmail.php",
+				      url: "php/response.php",
 				      data: $(form).serialize(),
 
 				      beforeSend: function() { 
@@ -47,21 +50,23 @@
 		               	}, 1000);
 				            setTimeout(function(){
 				               $('#form-message-success').fadeIn();   
-		               	}, 1400);
+		               	}, 14);
 
 		               	setTimeout(function(){
 				               $('#form-message-success').fadeOut();   
-		               	}, 8000);
+		               	}, 80);
 
 		               	setTimeout(function(){
 				               $submit.css('display', 'none').text(waitText);  
-		               	}, 1400);
+		               	}, 14);
 
 		               	setTimeout(function(){
 		               		$( '#contactForm' ).each(function(){
 											    this.reset();
 											});
-		               	}, 1400);
+							  }, 14);
+						   
+						   window.location.href = '/forms/1/main.php'
 			               
 			            } else {
 			               $('#form-message-warning').html(msg);
